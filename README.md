@@ -8,14 +8,14 @@ Ryhmälistaan liitytään hakemalla listaa sen nimellä. Ryhmään liittynyt jä
 
 Toimintoja:
 
->Kirjautuminen
->Listan luominen
->Listaan lisääminen / listasta poistaminen
->Listan poistaminen
->Omien listojen listaaminen
->Ryhmälistan luonti & tyypin määrittely (mitä oikeuksia ryhmän jäsenillä on)
->Ryhmälistan poisto 
->Ryhmälistaan lisääminen / ryhmälistasta poistaminen
->Ryhmälistan haku
->Ryhmälistaan liittyminen
->Ryhmälistasta poistuminen
+-Kirjautuminen
+-Listan luominen
+-Listaan lisääminen / listasta poistaminen
+-Listan poistaminen
+-Omien listojen listaaminen
+-Ryhmälistan luonti & tyypin määrittely (mitä oikeuksia ryhmän jäsenillä on)
+-Ryhmälistan poisto 
+-Ryhmälistaan lisääminen / ryhmälistasta poistaminen
+-Ryhmälistan haku
+-Ryhmälistaan liittyminen
+-Ryhmälistasta poistuminen

@@ -6,16 +6,22 @@ Käyttäjä voi myös luoda yhteisen listan useamman käyttäjän käyttöön. R
 
 Ryhmälistaan liitytään hakemalla listaa sen nimellä. Ryhmään liittynyt jäsen voi lisätä ryhmälistan omiin listoihinsa. 
 
-Toimintoja:
+####Toimintoja:
 
--Kirjautuminen
--Listan luominen
--Listaan lisääminen / listasta poistaminen
--Listan poistaminen
--Omien listojen listaaminen
--Ryhmälistan luonti & tyypin määrittely (mitä oikeuksia ryhmän jäsenillä on)
--Ryhmälistan poisto 
--Ryhmälistaan lisääminen / ryhmälistasta poistaminen
--Ryhmälistan haku
--Ryhmälistaan liittyminen
--Ryhmälistasta poistuminen
+..*Kirjautuminen
+..*Listan luominen
+..*Listaan lisääminen / listasta poistaminen
+..*Listan poistaminen
+..*Omien listojen listaaminen
+..*Ryhmälistan luonti & tyypin määrittely (mitä oikeuksia ryhmän jäsenillä on)
+..*Ryhmälistan poisto 
+..*Ryhmälistaan lisääminen / ryhmälistasta poistaminen
+..*Ryhmälistaan liittyminen
+..*Ryhmälistasta poistuminen
+
+
+[Tietokantakaavio](https://yuml.me/cd161330.png)
+
+[User stories]()
+
+[Sovellus Herokussa](lista-palvelu-iv.herokuapp.com)

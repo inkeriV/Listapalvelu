@@ -3,8 +3,7 @@ Käyttäjänä voin kirjautua palveluun omilla tunnuksillani.
 Käyttäjänä voin luoda itselleni useita listoja.
 Käyttäjänä voin lisätä listaan muistettavia asioita, ja poistaa niitä sitä mukaan kun ne valmistuvat.
 Käyttäjänä voin luoda ryhmä-listan muiden käyttäjien katseltavaksi tai käytettäväksi.
-Käyttäjänä voin etsiä toisen käyttäjän luomaa ryhmä-listaa tietokannasta listan nimen perusteella.
-Käyttäjänä voin liittää ryhmä-listan omiin listoihini.
+Käyttäjänä voin lisätä toisen käyttäjän tekemän ryhmä-listan omiin listoihini, jos olen saanut linkin kyseiseen listaan.
 Ryhmä-listan luojana voin lisätä listaan töitä, poistaa listalta töitä tai poistaa koko listan.
 Ryhmä-listan luojana vain minä voin poistaa koko listan.
 Ryhmä-listan jäsenenä voin lisätä listaan töitä tai  poistaa listalta töitä, jos lista on tarkoitettu ryhmän käytettäväksi.

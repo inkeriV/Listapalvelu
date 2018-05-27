@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Listap</title>
+	</head>
+	
+	<body>
+		<ul>
+			<li><a href="{{ url_for('lists_index') }}">Show all lists</a></li>
+			<li><a href="{{ url_for('lists_form') }}">Create a new list</a></li> 
+		</ul>
+		
+		{% block body %}
+		<p>
+		sisältö muuaöta
+		</p>
+		{% endblock %}
+	</body>
+</html>

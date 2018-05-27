@@ -24,5 +24,5 @@ Ryhm채listaan saadaan linkki sen luojalta, josta k채ytt채j채 voi liitt채채 ryhm�
 
 [User stories](https://github.com/inkeriV/Listapalvelu/blob/master/documentation/user-story.txt)
 
-[Sovellus Herokussa](lista-palvelu-iv-herokuapp.com)
+[Sovellus Herokussa](https://lista-palvelu-iv.herokuapp.com)
 

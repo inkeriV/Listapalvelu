@@ -6,23 +6,23 @@ Käyttäjä voi myös luoda yhteisen listan useamman käyttäjän käyttöön. R
 
 Ryhmälistaan saadaan linkki sen luojalta, josta käyttäjä voi liittää ryhmälistan omiin listoihinsa. 
 
-####Toimintoja:
+# Toimintoja:
 
-..*Kirjautuminen
-..*Listan luominen
-..*Listaan lisääminen / listasta poistaminen
-..*Listan poistaminen
-..*Omien listojen listaaminen
-..*Ryhmälistan luonti & tyypin määrittely (mitä oikeuksia ryhmän jäsenillä on)
-..*Ryhmälistan poisto 
-..*Ryhmälistaan lisääminen / ryhmälistasta poistaminen
-..*Ryhmälistaan liittyminen
-..*Ryhmälistasta poistuminen
+* Kirjautuminen
+* Listan luominen
+* Listaan lisääminen / listasta poistaminen
+* Listan poistaminen
+* Omien listojen listaaminen
+* Ryhmälistan luonti & tyypin määrittely (mitä oikeuksia ryhmän jäsenillä on)
+* Ryhmälistan poisto 
+* Ryhmälistaan lisääminen / ryhmälistasta poistaminen
+* Ryhmälistaan liittyminen
+* Ryhmälistasta poistuminen
 
 
 [Tietokantakaavio](https://yuml.me/cd161330.png)
 
-[User stories]()
+[User stories](https://github.com/inkeriV/Listapalvelu/blob/master/documentation/user.story.txt)
 
 [Sovellus Herokussa](lista-palvelu-iv.herokuapp.com)
 

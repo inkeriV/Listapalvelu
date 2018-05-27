@@ -4,7 +4,7 @@ Listapalvelussa kirjautunut käyttäjä voi luoda itselleen mitä tahansa listoj
 
 Käyttäjä voi myös luoda yhteisen listan useamman käyttäjän käyttöön. Ryhmälistaa voi käyttää esim. opettaja oppilaiden tehtävien listaamiseen tai tapahtumanjärjestäjät puuttuvien ruokien/tarvikkeiden kirjalla pitoon. Ryhmän luoja voi päättää, onko muilla ryhmän jäsenillä oikeutta muokata listaa. 
 
-Ryhmälistaan liitytään hakemalla listaa sen nimellä. Ryhmään liittynyt jäsen voi lisätä ryhmälistan omiin listoihinsa. 
+Ryhmälistaan saadaan linkki sen luojalta, josta käyttäjä voi liittää ryhmälistan omiin listoihinsa. 
 
 ####Toimintoja:
 
@@ -25,3 +25,4 @@ Ryhmälistaan liitytään hakemalla listaa sen nimellä. Ryhmään liittynyt jä
 [User stories]()
 
 [Sovellus Herokussa](lista-palvelu-iv.herokuapp.com)
+

@@ -17,4 +17,7 @@ from application import views
 from application.lists import models
 from application.lists import views
 
+from application.auth import models
+from application.auth import views
+
 db.create_all()

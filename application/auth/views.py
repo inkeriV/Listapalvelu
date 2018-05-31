@@ -1,6 +1,8 @@
 from flask import render_template, request, redirect, url_for
+#lisätään kirjautumislomakkeen käsittelyyn konkreettinen kirjautuminen, flaskin login_user -funktio
+from flask_login import login_user, logout_user
 
-from application import app
+from application import app, db
 from application.auth.models import User
 from application.auth.forms import LoginForm
 
@@ -15,5 +17,10 @@ def auth_login():
 	if not user:
 		return render_template("auth/loginform.html", form = form, error = "No such username or password")
 	
-	print("Käyttäjä" + user.name + "tunnistettu.")
+	login_user(user)
+	return redirect(url_for("index"))
+
+@app.route("/auth/logout")
+def auth_logout():
+	logout_user()
 	return redirect(url_for("index"))

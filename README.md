@@ -26,3 +26,6 @@ Ryhm채listaan saadaan linkki sen luojalta, josta k채ytt채j채 voi liitt채채 ryhm�
 
 [Sovellus Herokussa](https://lista-palvelu-iv.herokuapp.com)
 
+## Tunnukset
+k채ytt채j채tunnus: tester12
+salasana: hbky12

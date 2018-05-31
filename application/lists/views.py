@@ -1,18 +1,23 @@
 from flask import render_template, request, redirect, url_for
+from flask_login import login_required, current_user
 
 from application import app, db
 from application.lists.models import Lists
 from application.lists.forms import ListForm
 
 @app.route("/lists", methods=["GET"])
+#tälä rivillä oli @login_required, ei välttis tarvi. kokeilua
 def lists_index():
 	return render_template("lists/listaus.html", lists =Lists.query.all())
 
 @app.route("/lists/new/")
+@login_required
 def lists_form():
 	return render_template("lists/new.html", form = ListForm())
 
+
 @app.route("/lists/", methods=["POST"])
+@login_required
 def lists_create():
 
 	form = ListForm(request.form)
@@ -21,6 +26,8 @@ def lists_create():
 		return render_template("lists/new.html", form = form)
 
 	l = Lists(form.name.data)
+	#viitteen lisääminen
+	db.account_id=current_user.id
 
 	db.session().add(l)
 	db.session().commit()

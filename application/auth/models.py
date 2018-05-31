@@ -11,6 +11,10 @@ class User(db.Model):
 	username = db.Column(db.String(144), nullable=False)
 	password = db.Column(db.String(144), nullable=False)
 
+	#alla olevasta rivistä tuli virhe, sillä olin kirjoittanut "lists" enkä "Lists".
+	#Lists viittaa luokkaan ja lists viittaa tauluun !! tässä piti viitata luokkaan.
+	lists = db.relationship("Lists", backref='account', lazy=True)
+
 	def __init__(self, name, username, password):
 		self.name=name
 		self.username=username

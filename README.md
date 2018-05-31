@@ -27,5 +27,5 @@ Ryhmälistaan saadaan linkki sen luojalta, josta käyttäjä voi liittää ryhm�
 [Sovellus Herokussa](https://lista-palvelu-iv.herokuapp.com)
 
 ## Tunnukset
-käyttäjätunnus: tester12
-salasana: hbky12
+* käyttäjätunnus: tester12
+* salasana: hbky12

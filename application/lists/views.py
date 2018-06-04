@@ -7,7 +7,7 @@ from application.lists.forms import ListForm
 
 @app.route("/lists", methods=["GET"])
 #ennen ei login_required, mutta nyt uloskirjautumisen jälkeen sovellus kaatuu kaikkien listojen näyttöön 
-@login_required
+#@login_required
 def lists_index():
 	return render_template("lists/listaus.html", lists =Lists.query.all())
 

@@ -11,7 +11,7 @@ from flask_sqlalchemy import SQLAlchemy
 #muuten omaa tietokantaa
 import os
 
-if os.environ.get("HEROKU"):
+if os.environ.get("~/Downloads/heroku/bin/HEROKU"):
 	app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("postgresql-tetrahedral-44109") #tähän postgresql antama nimi eikä "DATABASE_URL"
 else:
 	app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///lists.db"

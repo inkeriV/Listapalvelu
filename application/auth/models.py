@@ -15,10 +15,14 @@ class User(db.Model):
 	#Lists viittaa luokkaan ja lists viittaa tauluun !! tässä piti viitata luokkaan.
 	lists = db.relationship("Lists", backref='account', lazy=True)
 
-	def __init__(self, name, username, password):
+	
+	
+	#tässä oli parametreinä ennen(self, name, username, password)
+	#ja sisällä selfin lisäksi self.username=username, self.password=password
+	#tästä mahdollisesti virhe-kokeilua
+	def __init__(self, name):
 		self.name=name
-		self.username=username
-		self.password = password
+
 
 	def get_id(self):
 	        return self.id

@@ -16,6 +16,7 @@ def lists_form():
 	return render_template("lists/new.html", form = ListForm())
 
 
+
 @app.route("/lists/", methods=["POST"])
 @login_required
 def lists_create():
@@ -26,8 +27,8 @@ def lists_create():
 		return render_template("lists/new.html", form = form)
 
 	l = Lists(form.name.data)
-	#viitteen lisääminen
-	db.account_id=current_user.id
+	#viitteen lisääminen. tässä oli db.account eikä l.account..tästä tuli virhe
+	l.account_id=current_user.id
 
 	db.session().add(l)
 	db.session().commit()

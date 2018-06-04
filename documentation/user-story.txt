@@ -1,7 +1,9 @@
 Käyttäjänä voin rekisteröityä palveluun luomalla itselleni käyttäjätunnuksen ja salasanan.
 Käyttäjänä voin kirjautua palveluun omilla tunnuksillani.
 Käyttäjänä voin luoda itselleni useita listoja.
-Käyttäjänä voin lisätä listaan muistettavia asioita, ja poistaa niitä sitä mukaan kun ne valmistuvat.
+Käyttäjänä voin lisätä listaan muistettavia asioita.
+Käyttäjänä voin poistaa listaltani asioita.
+Käyttäjänä voin poistaa luomani listan.
 Käyttäjänä voin luoda ryhmä-listan muiden käyttäjien katseltavaksi tai käytettäväksi.
 Käyttäjänä voin lisätä toisen käyttäjän tekemän ryhmä-listan omiin listoihini, jos olen saanut linkin kyseiseen listaan.
 Ryhmä-listan luojana voin lisätä listaan töitä, poistaa listalta töitä tai poistaa koko listan.

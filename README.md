@@ -20,7 +20,8 @@ Ryhm채listaan saadaan linkki sen luojalta, josta k채ytt채j채 voi liitt채채 ryhm�
 * Ryhm채listasta poistuminen
 
 
-[Tietokantakaavio](https://yuml.me/cd161330.png)
+## Tietokantakaavio
+![alt text](https://yuml.me/436b44e8.png "Tietokantakaavio")
 
 [User stories](https://github.com/inkeriV/Listapalvelu/blob/master/documentation/user-story.txt)
 

@@ -30,4 +30,4 @@ Ryhmälistaan saadaan linkki sen luojalta, josta käyttäjä voi liittää ryhm�
 ## Tunnukset
 * käyttäjätunnus: tester12
 * salasana: hbky12
-* HUOM! tunnukset ei toimi. En saa sovellusta käyttämään herokun postgresql:lää. Sovellus toimii lokaalisti, mutta heti kun sovelluksen pitäisi lukea herokun tietokantaa, se kaatuu.
+* HUOM! tunnukset ei toimi. En saa sovellusta käyttämään herokun postgresql:lää. Sovellus toimii lokaalisti, mutta heti kun sovelluksen pitäisi lukea herokun tietokantaa, johon tunnukset on tallennettu, se kaatuu. 

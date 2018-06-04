@@ -27,7 +27,14 @@ Ryhmälistaan saadaan linkki sen luojalta, josta käyttäjä voi liittää ryhm�
 
 [Sovellus Herokussa](https://lista-palvelu-iv.herokuapp.com)
 
+# Hei koodikatselmoija!
+* sovellusta ei oikein pääse katsomaan, koska tunnukset eivät toimi. Jos saat jotain ideaa siitä, mistä se voi johtua, olisin hyvin kiitollinen. Ohjelma pyörii siis lokaalisti moitteetta, mutta en saa sovellusta käyttämään herokun tietokantaa.
+* Aloitussivulla redirectit kirjautumislomakkeelle toimii, mutta heti kun sovelluksen pitäisi lukea tietokantaa, se kaatuu. Procfile on tällä hetkellä web: gunicorn application:app --preload, tuota ennen se oli niin kuin esimerkissäkin aluksi web: gunicorn --preload --workers 1 application:app.
+* Koetin vaihtaa application -kansion __init__.py tiedoston if ehtoon "if os.environ.get("HEROKU"):" lanausmerkkien sisään HEROKUn tilalle jotain muuta, jolloin sovellus ei kaadu Show all lists eikä Login komentoon. Login ilmoittaa vain ettei kyseisiä tunnuksia ole, koska ympäristömuuttuja oli vain jotain tekstiä eikä viitannut herokun tietokantaan.
+* Koneeltani näen heroku pg:psql komennolla että tietokannassani on 2 taulua ja olen syöttänyt account-tauluun kyseiset tunnukset.
+
 ## Tunnukset
 * käyttäjätunnus: tester12
 * salasana: hbky12
 * HUOM! tunnukset ei toimi. En saa sovellusta käyttämään herokun postgresql:lää. Sovellus toimii lokaalisti, mutta heti kun sovelluksen pitäisi lukea herokun tietokantaa, johon tunnukset on tallennettu, se kaatuu. 
+

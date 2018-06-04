@@ -5,7 +5,7 @@ from application import app, db
 from application.lists.models import Lists
 from application.lists.forms import ListForm
 
-@app.route("/lists", methods=["GET"])
+@app.route("/lists/", methods=["GET"])
 #ennen ei login_required, mutta nyt uloskirjautumisen jälkeen sovellus kaatuu kaikkien listojen näyttöön 
 #@login_required
 def lists_index():
@@ -18,7 +18,7 @@ def lists_form():
 
 
 
-@app.route("/lists", methods=["POST"]) #ennen /lists/
+@app.route("/lists/", methods=["POST"])
 @login_required
 def lists_create():
 

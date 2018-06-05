@@ -12,7 +12,7 @@ from flask_sqlalchemy import SQLAlchemy
 import os
 
 if os.environ.get("HEROKU"):
-	app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("postgresql-tetrahedral-44109") #tähän postgresql antama nimi eikä "DATABASE_URL"
+	app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL") # ("postgresql-tetrahedral-44109")
 else:
 	app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///lists.db"
 	app.config["SQLALCHEMY_ECHO"] = True

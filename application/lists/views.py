@@ -16,7 +16,7 @@ def lists_form():
 	return render_template("lists/new.html", form = ListForm())
 
 #listan poisto
-@app.route("/lists/<list_id>", methods=["DELETE"])
+@app.route("/lists/<list_id>") #, methods=["DELETE"])
 @login_required
 def lists_delete():
 	db.execute('delete from entries where id = ?'[request.form['entry_id']])

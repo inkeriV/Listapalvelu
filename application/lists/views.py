@@ -18,7 +18,7 @@ def lists_form():
 #listan poisto
 @app.route("/lists/<list_id>", methods=["DELETE"])
 @login_required
-def delete_list():
+def lists_delete():
 	db.execute('delete from entries where id = ?'[request.form['entry_id']])
 	db.commit()
 	return redirect(url_for("lists_index"))

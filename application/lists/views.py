@@ -37,7 +37,7 @@ def lists_create():
 
 
 #listan poisto
-@app.route("/lists/delete/<list_id>", methods=["GET","POST","DELETE"])
+@app.route("/lists/delete/<list_id>", methods=["GET","POST"])
 @login_required
 def lists_delete(list_id):
         db.session.delete(List.query.get(list_id))

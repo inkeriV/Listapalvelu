@@ -16,12 +16,11 @@ def lists_form():
 	return render_template("lists/new.html", form = ListForm())
 
 #listan poisto
-@app.route("/lists/delete/<list_id>")
+@app.route("/lists/delete/<list_id>", methods=["GET","POST"])
 @login_required
 def lists_delete(list_id):
-	list = List.query.get(list_id)
-	db.session.delete(list)
-	db.session().commit()
+	db.session.delete(List.query.get(list_id))
+	db.session.commit()
 	return redirect(url_for("lists_index"))
 
 

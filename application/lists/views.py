@@ -6,7 +6,7 @@ from application.lists.models import Lists
 from application.lists.forms import ListForm
 
 @app.route("/lists/", methods=["GET"])
-login_required
+@login_required
 def lists_index():
 	return render_template("lists/listaus.html", lists = Lists.query.all())
 

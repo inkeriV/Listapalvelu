@@ -6,8 +6,7 @@ from application.lists.models import Lists
 from application.lists.forms import ListForm
 
 @app.route("/lists/", methods=["GET"])
-#ennen ei login_required, mutta nyt uloskirjautumisen jälkeen sovellus kaatuu kaikkien listojen näyttöön 
-#@login_required
+login_required
 def lists_index():
 	return render_template("lists/listaus.html", lists = Lists.query.all())
 
@@ -15,6 +14,14 @@ def lists_index():
 @login_required
 def lists_form():
 	return render_template("lists/new.html", form = ListForm())
+
+#listan poisto
+@app.route("/lists/<list_id>", methods=["DELETE"])
+@login_required
+def delete_list():
+	db.execute('delete from entries where id = ?'[request.form['entry_id']])
+	db.commit()
+	return redirect(url_for("lists_index"))
 
 
 

@@ -40,6 +40,6 @@ def lists_create():
 @app.route("/lists/delete/<list_id>", methods=["GET","POST"])
 @login_required
 def lists_delete(list_id):
-        db.session.delete(List.query.get(list_id))
+        db.session.delete(Lists.query.get(list_id))
         db.session().commit()
         return redirect(url_for("lists_index"))

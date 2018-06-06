@@ -10,8 +10,7 @@
 			<td>{{ list.name }}</td>
 			{% if current_user.is_authenticated %}
 				<td>
-					<form action="{{ url_for('lists_delete', list_id=list.id) }}">
-						<input type="hidden" name="list_id" value="{{ loop.revindex }}"> 
+					<form action="{{ url_for('lists_delete', list_id=list.id) }}" method="post"> 
 				        	<input type="submit" value="Poista lista"/n>
 				        </form>
 				</td>

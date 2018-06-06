@@ -19,8 +19,8 @@ def lists_form():
 @app.route("/lists/delete/<list_id>")
 @login_required
 def lists_delete(list_id):
-	item = Item.query.get(item_id)
-	db.session.delete(item)
+	list = List.query.get(list_id)
+	db.session.delete(list)
 	db.session().commit()
 	return redirect(url_for("lists_index"))
 

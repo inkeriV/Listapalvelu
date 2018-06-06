@@ -10,8 +10,8 @@
 			<td>{{ list.name }}</td>
 			{% if current_user.is_authenticated %}
 				<td>
-					<form action="{{ url_for('lists_delete', list_id=list.id) }}"> 
-				        	<input type="submit" class="btn btn-primary btn-sm">Poista lista</>
+					<form method="POST" action="{{ url_for('lists_delete', list_id=list.id) }}"> 
+				        	<input type="submit" value"Poista lista"/>
 				        
 				        </form>
 				</td>

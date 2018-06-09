@@ -22,11 +22,17 @@ db = SQLAlchemy(app)
 
 
 from application import views
+#listat
 from application.lists import models
 from application.lists import views
 
+#käyttäjä
 from application.auth import models
 from application.auth import views
+
+#työt
+from application.jobs import models
+from application.jobs import views
 
 #kirjautuminen, loginmanager
 from application.auth.models import User

@@ -15,7 +15,23 @@
 				        
 				        </form>
 				</td>
+				<td>	
+					<form method="POST" action="{{ url_for('jobs_create', list_id=list.id) }}">
+							
+						<td colspan="2">
+						<input type="text" name="name"/>							
+						<input type="submit" value="Add a job"/>
+					</form>	
+				</td>
+			
 			{% endif %}
+			{% for job in jobs %}
+				{% if job.list_id == list.id %}
+				<tr>
+					<td>{{ job.name }}</td>
+				</tr>
+				{% endif %}
+			{% endfor %}		
 		</tr>
 		{% endfor %}
 	</table>

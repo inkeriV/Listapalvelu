@@ -7,11 +7,13 @@ class Lists(db.Model):
 	onupdate=db.func.current_timestamp()
 
 	name = db.Column(db.String(144), nullable=False)
-	joinable = db.Column(db.Boolean, nullable=False)
+	type = db.Column(db.Integer, nullable=False)
 
 	account_id = db.Column(db.Integer, db.ForeignKey('account.id'),nullable=False)
+	jobs = db.relationship("Jobs", cascade='all, delete-orphan', backref='lists', lazy=True) #delete orphan poistaa listan työt kun lista poistetaan
 
-	def __init__(self, name):
+	def __init__(self, name, type):
 		self.name = name
-		self.joinable = False
+		self.type = 1
+
 

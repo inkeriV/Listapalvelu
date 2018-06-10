@@ -1,5 +1,7 @@
 from application import db
 
+from sqlalchemy.sql import text
+
 class User(db.Model):
 	__tablename__="account"
 
@@ -15,8 +17,8 @@ class User(db.Model):
 	#Lists viittaa luokkaan ja lists viittaa tauluun !! tässä piti viitata luokkaan.
 	lists = db.relationship("Lists", backref='account', lazy=True)
 
-	
-	
+
+
 	#tässä oli parametreinä ennen(self, name, username, password)
 	#ja sisällä selfin lisäksi self.username=username, self.password=password
 	#tästä mahdollisesti virhe-kokeilua
@@ -35,3 +37,20 @@ class User(db.Model):
 
 	def is_authenticated(self):
 	        return True
+
+
+	#yhteenvetokysely. muista sisentää!
+	@staticmethod
+	def users_with_no_started_jobs():
+		stmt = 	text(	"SELECT Account.id FROM Account, Lists, Jobs" #count(account.id) 
+		              	" WHERE Account.id = Lists.account_id AND Lists.id = Jobs.list_id"
+		                " AND Jobs.id NOT IN(SELECT Jobs.id FROM Jobs WHERE"
+		                " Jobs.status=2 OR Jobs.status=3)")
+		tulos=db.engine.execute(stmt)
+		#print(tulos.fetchall())
+		#for row in tulos: #toinen vaihtoehto, kyselyssä vika..
+		#	print(row[0])
+		lista=[]
+		for row in tulos:
+			lista.append({"id":row[0]})
+		return lista

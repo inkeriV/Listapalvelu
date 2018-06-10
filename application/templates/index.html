@@ -4,4 +4,14 @@
 	<p>
 	Hei kaikki!
 	</p>
+	
+	{% if lazy_users is defined %}
+	<p>
+		Number of users who haven't started any of their jobs:
+	</p>
+	<ul>
+		{{ lazy_users|length }}
+	</ul>
+	
+	{% endif %}
 {% endblock %}

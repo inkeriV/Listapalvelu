@@ -42,7 +42,7 @@ class User(db.Model):
 	#yhteenvetokysely. muista sisentää!
 	@staticmethod
 	def users_with_no_started_jobs():
-		stmt = 	text(	"SELECT Account.id FROM Account, Lists, Jobs" #count(account.id) 
+		stmt = 	text(	"SELECT DISTINCT Account.id FROM Account, Lists, Jobs" #count(account.id) 
 		              	" WHERE Account.id = Lists.account_id AND Lists.id = Jobs.list_id"
 		                " AND Jobs.id NOT IN(SELECT Jobs.id FROM Jobs WHERE"
 		                " Jobs.status=2 OR Jobs.status=3)")

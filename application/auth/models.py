@@ -19,11 +19,11 @@ class User(db.Model):
 
 
 
-	#tässä oli parametreinä ennen(self, name, username, password)
-	#ja sisällä selfin lisäksi self.username=username, self.password=password
-	#tästä mahdollisesti virhe-kokeilua
-	def __init__(self, name):
+	#jotta rekisteröityminen onnistuu, parametreinä kaikki syötet. attribuutit!
+	def __init__(self, name, username, password):
 		self.name=name
+		self.username=username
+		self.password=password
 
 
 	def get_id(self):

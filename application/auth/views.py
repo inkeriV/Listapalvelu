@@ -30,14 +30,18 @@ def auth_logout():
 @app.route("/register", methods = ["GET", "POST"])
 def register():
 	form = RegisterForm(request.form)
-	if request.method == "POST": #and form.validate():
+
+	if not form.validate(): #tod.näk. forms.py piti olla class Meta, jotta rekist. toimi
+		return render_template("auth/registerform.html", form=form)
+
+	if request.method == "POST":
 
 		user = User(name=form.name.data, username=form.username.data, password=form.password.data)
 
 		db.session().add(user)
 		db.session().commit()
 
-		#flash("Registered succesfully. You can now login.")
+		flash("Registered succesfully. You can now login.")
 
 		return redirect(url_for("index"))
-	return render_template("auth/registerform.html", form=form)
+

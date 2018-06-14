@@ -17,3 +17,5 @@ class RegisterForm(FlaskForm):
 	password = PasswordField("Password", validators=[DataRequired("enter password"),Length(min=4, max=20)])
 	confirm = PasswordField("Confirm password", validators=[DataRequired("confirm password"), EqualTo("password")])
 
+	class Meta:
+		csrf=False #validointien tarkastaminen toimi vasta kun muistin lisätä tämän

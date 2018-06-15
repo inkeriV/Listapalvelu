@@ -11,6 +11,8 @@ from application.jobs.forms import JobForm
 @app.route("/lists/", methods=["GET"])
 @login_required
 def lists_index():
+	#if admin query all
+	#muuten kato account_id on current_id
 	return render_template("lists/listaus.html", lists = Lists.query.all(), jobs = Jobs.query.all()) #kaikki työt
 
 @app.route("/lists/new/")
@@ -52,6 +54,19 @@ def jobs_create(list_id):
 
 	return redirect(url_for("lists_index"))
 
+#työn lisääminen listan omalla sivulla
+@app.route("/lists/<list_name>/<list_id>", methods=["POST"])
+@login_required
+def create_job(list_name, list_id):
+
+	j = Jobs(name=request.form.get("name"), status="1")
+	j.list_id=list_id
+
+	db.session().add(j)
+	db.session().commit()
+
+	return redirect(url_for("show_list", list_id=list_id, list_name=list_name))
+
 
 #listan poisto
 @app.route("/lists/delete/<list_id>", methods=["GET","POST"])
@@ -62,3 +77,9 @@ def lists_delete(list_id):
 	db.session.delete(Lists.query.get(list_id))
 	db.session().commit()
 	return redirect(url_for("lists_index"))
+
+#yhden listan sivut
+@app.route("/lists/<list_name>/<list_id>", methods=["GET"])
+@login_required
+def show_list(list_id, list_name):
+	return render_template("lists/showlist.html", list=Lists.query.get(list_id), jobs=Jobs.query.filter_by(list_id=list_id))

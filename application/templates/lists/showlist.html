@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block body %}
+	<table>
+	<form method="GET" action="{{ url_for('show_list', list_id=list.id, list_name=list.name) }}">
+		<h3>{{ list.name }}<h3>
+		{% if current_user.is_authenticated %}
+			<td>
+				<form action="{{ url_for('lists_delete', list_id=list.id) }}"> 
+					<input type="submit" value="Poista lista"/>
+				</form>
+			</td>
+			<td>	
+				<form method="POST" action="{{ url_for('create_job', list_id=list.id, list_name=list.name) }}">
+					<td colspan="2">
+					<input type="text" name="name"/>							
+					<input type="submit" value="Add a job"/>
+				</form>	
+			</td>
+		{% endif %}
+		{% for job in jobs %}
+			{% if job.list_id == list.id %}
+				<tr>
+					<td>{{ job.name }}</td>
+				
+				{% if job.status == 1 %}
+					
+					<td> status: waiting </td>
+				
+				{% endif %}
+				{% if job.status == 2 %}
+					<td> status: in process </td>
+				{% endif %}
+				{% if job.status == 3 %}
+					<td> status: done </td>
+				{% endif %}
+				
+				<td><form action="{{ url_for('change_status', job_id=job.id, list_name=list.name, list_id=list.id) }}">
+					<input type="submit" value="change status"/>
+				</form></td>
+						
+				</tr>		
+			{% endif %}
+		{% endfor %}	
+        </form>
+        </table>
+{% endblock %}
+

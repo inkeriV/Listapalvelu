@@ -7,7 +7,7 @@
 		</tr>
 		{% for list in lists %}
 		<tr>
-			<td>{{ list.name }}</td>
+			<td>{{ list.name }} <a href="{{ url_for('show_list', list_name=list.name, list_id=list.id) }}">muokkaa</a></td>
 			{% if current_user.is_authenticated %}
 				<td>
 					<form action="{{ url_for('lists_delete', list_id=list.id) }}"> 

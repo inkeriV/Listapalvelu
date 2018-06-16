@@ -83,7 +83,7 @@ def lists_delete(list_id):
 @app.route("/lists/<list_name>/<list_id>", methods=["GET"])
 @login_required
 def show_list(list_id, list_name):
-	if list_id != Lists.query.get(list_id): #tänne myös jos lista on private + muut tyypit!
-		flash("Listaa ei ole olemassa")
-		return redirect(url_for("lists_index"))
+	#if list_id != Lists.query.get(list_id): #tänne myös jos lista on private + muut tyypit!
+	#	flash("Listaa ei ole olemassa")
+	#	return redirect(url_for("lists_index"))
 	return render_template("lists/showlist.html", list=Lists.query.get(list_id), jobs=Jobs.query.filter_by(list_id=list_id))

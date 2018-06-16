@@ -87,3 +87,8 @@ def show_list(list_id, list_name):
 	#	flash("Listaa ei ole olemassa")
 	#	return redirect(url_for("lists_index"))
 	return render_template("lists/showlist.html", list=Lists.query.get(list_id), jobs=Jobs.query.filter_by(list_id=list_id))
+
+#käyttöohjeiden tulostus
+@app.route("/kayttoohje/", methods=["GET"])
+def ohje():
+	return render_template("/lists/kayttoohje.html")

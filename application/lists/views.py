@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect, url_for
+from flask import render_template, request, redirect, url_for, flash
 from flask_login import login_required, current_user
 
 from application import app, db
@@ -78,8 +78,12 @@ def lists_delete(list_id):
 	db.session().commit()
 	return redirect(url_for("lists_index"))
 
+
 #yhden listan sivut
 @app.route("/lists/<list_name>/<list_id>", methods=["GET"])
 @login_required
 def show_list(list_id, list_name):
+	if list_id != Lists.query.get(list_id): #tänne myös jos lista on private + muut tyypit!
+		flash("Listaa ei ole olemassa")
+		return redirect(url_for("lists_index"))
 	return render_template("lists/showlist.html", list=Lists.query.get(list_id), jobs=Jobs.query.filter_by(list_id=list_id))

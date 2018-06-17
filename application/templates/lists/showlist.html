@@ -4,12 +4,12 @@
 	<table>
 	<form method="GET" action="{{ url_for('show_list', list_id=list.id, list_name=list.name) }}">
 		<h3>{{ list.name }}<h3>
-		{% if current_user.is_authenticated %}
+		{% if current_user.is_authenticated %}	
 			<td>
 				<form action="{{ url_for('lists_delete', list_id=list.id) }}">
 					<input type="submit" value="Poista lista"/>
-				</form>		
-			</td>	
+				</form>
+			</td>		
 			<td>	
 				<form method="POST" action="{{ url_for('create_job', list_id=list.id, list_name=list.name) }}">
 					<td colspan="2">

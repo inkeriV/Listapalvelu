@@ -1,5 +1,5 @@
 from flask import render_template, request, redirect, url_for, flash
-from flask_login import login_required, current_user
+from flask_login import current_user, login_required
 
 from application import app, db
 from application.lists.models import Lists
@@ -8,12 +8,17 @@ from application.lists.forms import ListForm
 from application.jobs.models import Jobs
 from application.jobs.forms import JobForm
 
+
+#listojen listaus
 @app.route("/lists/", methods=["GET"])
 @login_required
 def lists_index():
-	#if admin query all
-	#muuten kato account_id on current_id
-	return render_template("lists/listaus.html", lists = Lists.query.all(), jobs = Jobs.query.all()) #kaikki työt
+	#näytä kaikki listat adminille
+	if current_user.admin == 1:
+		return render_template("lists/listaus.html", lists = Lists.query.all(), jobs = Jobs.query.all()) #kaikki työt
+	#muuten vain käyttäjän omat listat
+	return render_template("lists/listaus.html", lists = Lists.query.filter_by(account_id=current_user.id), jobs=Jobs.query.all())
+
 
 @app.route("/lists/new/")
 @login_required

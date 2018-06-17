@@ -16,14 +16,17 @@ class User(db.Model):
 	#alla olevasta rivistä tuli virhe, sillä olin kirjoittanut "lists" enkä "Lists".
 	#Lists viittaa luokkaan ja lists viittaa tauluun !! tässä piti viitata luokkaan.
 	lists = db.relationship("Lists", backref='account', lazy=True)
+	#admin-boolean 17.6.
+	admin = db.Column(db.Boolean, nullable=False)
 
 
 
 	#jotta rekisteröityminen onnistuu, parametreinä kaikki syötet. attribuutit!
-	def __init__(self, name, username, password):
+	def __init__(self, name, username, password, admin): #user-role 17.6.
 		self.name=name
 		self.username=username
 		self.password=password
+		self.admin=admin
 
 
 	def get_id(self):
@@ -38,6 +41,8 @@ class User(db.Model):
 	def is_authenticated(self):
 	        return True
 
+	def get_admin(self): #admin boolean 17.6.
+		return self.admin
 
 	#yhteenvetokysely. muista sisentää!
 	@staticmethod

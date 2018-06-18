@@ -34,6 +34,17 @@ Ryhmälistaan saadaan linkki sen luojalta, josta käyttäjä voi liittää ryhm�
 * käyttäjätunnus2: tester13
 * salasana2: hbky13
 
+
+## Asennusohje Herokuun (alustava)
+
+* Luo tunnukset Herokun nettisivuilla
+* Lataa sovellus omalle koneellesi
+* Käytetään Gunicorn palvelunta
+* requirements.txt tiedostossa on Herokulle valmiina tiedot siitä, mitä riippuvuuksia sen pitää asentaa
+
+* Kirjaudu Herokuun komentoriviltä komennolla "heroku login" tai "~/path/heroku login"
+* Luo Herokuun paikka sovellukselle komennolla "heroku create sovelluksen-nimi"
+
 ## Käyttöohje
 
 ### Rekisteröityminen

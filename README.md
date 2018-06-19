@@ -29,7 +29,10 @@ Ryhmälistaan saadaan linkki sen luojalta, josta käyttäjä voi liittää ryhm�
 
 ## Tunnukset
 
-#### admin tunnukset: username: yllapitaja, password: hbkypitaja10 (admin näkee ja pystyy muokkaamaan/poistamaan kaikkien käyttäjien listoja)
+#### admin tunnukset
+* username: yllapitaja 
+* password: hbkypitaja10 
+* (admin näkee ja pystyy muokkaamaan/poistamaan kaikkien käyttäjien listoja)
 
 #### tavallisen käyttäjän tunnukset
 * käyttäjätunnus: tester12

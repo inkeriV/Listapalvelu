@@ -3,8 +3,27 @@
 {% block body %}
 	<table>
 	<form method="GET" action="{{ url_for('show_list', list_id=list.id, list_name=list.name) }}">
-		<h3>{{ list.name }}<h3>
+		<h3>{{ list.name }}</h3>
+		
 		{% if current_user.is_authenticated %}	
+			<tr>
+				{% if list.type == 1 %}
+					<td> This list is private. Other users can't see or modify it. </td>
+				{% endif %}
+				{% if list.type == 2 %}
+			   		<td> This list can be seen by users who know the url-address of this list. </td>
+				{% endif %}
+				{% if list.type == 3 %}
+			   		<td> This list is modifiable by users who know the url-address of this list. </td>
+				{% endif %}
+			</tr>
+			 
+			<td>
+				<form action="{{ url_for('type_change', list_name=list.name, list_id=list.id) }}">
+			       		<input type="submit" value="Change type"/>
+			     	</form>
+			</td>
+			                                                                                                                                                        
 			<td>
 				<form action="{{ url_for('lists_delete', list_id=list.id) }}">
 					<input type="submit" value="Poista lista"/>
@@ -36,9 +55,11 @@
 				{% endif %}
 				<td></td>
 				
-				<td> <form action="{{ url_for('change_status', job_id=job.id, list_name=list.name, list_id=list.id) }}">
-					<input type="submit" value="change status"/>
-				</form> </td>
+				<td> 
+					<form action="{{ url_for('change_status', job_id=job.id, list_name=list.name, list_id=list.id) }}">
+						<input type="submit" value="change status"/>
+					</form> 
+				</td>
 						
 				</tr>		
 			{% endif %}

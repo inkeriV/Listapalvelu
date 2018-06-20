@@ -97,3 +97,27 @@ def show_list(list_id, list_name):
 @app.route("/kayttoohje/", methods=["GET"])
 def ohje():
 	return render_template("/lists/kayttoohje.html")
+
+
+#listan tyypin muuntaminen
+@app.route("/lists/<list_name>/<list_id>/changetype", methods=["POST"])
+@login_required
+def type_change(list_name, list_id):
+	#if request.method == 'POST':
+		lista=Lists.sfsdfquery.get(list_id) #KORJAA VIRHE, testaan tuleeko metodi ikinä suoritukseen
+
+		if lista.type == 1:
+			lista.type = "2"
+			db.session().commit()
+			return redirect(url_for("show_list", list_id=list_id, list_name=list_name))
+
+		if lista.type == 2:
+			lista.type = "3"
+			db.session().commit()
+			return redirect(url_for("show_list", list_id=list_id, list_name=list_name))
+
+		if lista.type == 3:
+			lista.type = "1"
+			db.session().commit()
+			return redirect(url_for("show_list", list_id=list_id, list_name=list_name))
+

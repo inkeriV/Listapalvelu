@@ -21,7 +21,7 @@ Ryhm채listaan saadaan linkki sen luojalta, josta k채ytt채j채 voi liitt채채 ryhm�
 
 
 ## Tietokantakaavio
-![alt text](https://yuml.me/436b44e8.png "Tietokantakaavio")
+![alt text](https://yuml.me/845eedc9.png "Tietokantakaavio")
 
 [User stories](https://github.com/inkeriV/Listapalvelu/blob/master/documentation/user-story.md)
 

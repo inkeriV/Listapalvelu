@@ -9,20 +9,35 @@
 			<tr>
 				{% if list.type == 1 %}
 					<td> This list is private. Other users can't see or modify it. </td>
+					<td>
+						<form action="{{ url_for('type_change', list_name=list.name, list_id=list.id) }}">
+						</form>	
+						
+					</td>
+					                                                                                                                                                        
 				{% endif %}
 				{% if list.type == 2 %}
 			   		<td> This list can be seen by users who know the url-address of this list. </td>
+			   		<td>
+			   		      	<form action="{{ url_for('type_change', list_name=list.name, list_id=list.id) }}">
+			   			</form>
+			 		</td>
 				{% endif %}
 				{% if list.type == 3 %}
 			   		<td> This list is modifiable by users who know the url-address of this list. </td>
+			   		<td>
+			   		      	<form action="{{ url_for('type_change', list_name=list.name, list_id=list.id) }}">
+			   			</form>
+			   		</td>	
 				{% endif %}
-			</tr>
-			 
+			
+			</tr> 
 			<td>
 				<form action="{{ url_for('type_change', list_name=list.name, list_id=list.id) }}">
-			       		<input type="submit" value="Change type"/>
+			       		<input type = "submit" value="change type"/>
 			     	</form>
 			</td>
+		
 			                                                                                                                                                        
 			<td>
 				<form action="{{ url_for('lists_delete', list_id=list.id) }}">

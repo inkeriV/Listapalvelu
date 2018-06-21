@@ -83,6 +83,27 @@ def lists_delete(list_id):
 	db.session().commit()
 	return redirect(url_for("lists_index"))
 
+#listan tyypin muuntaminen
+@app.route("/lists/<list_name>/<list_id>/changetype", methods=["GET","POST"])
+def type_change(list_name, list_id):
+	# if request.method == "POST":
+	l=Lists.query.get(list_id)
+
+	if l.type == 1:
+		l.type = "2"
+		db.session().commit()
+		return redirect(url_for("show_list", list_id=list_id, list_name=list_name))
+
+	if l.type == 2:
+		l.type = "3"
+		db.session().commit()
+		return redirect(url_for("show_list", list_id=list_id, list_name=list_name))
+
+	if l.type == 3:
+		l.type = "1"
+		db.session().commit()
+		return redirect(url_for("show_list", list_id=list_id, list_name=list_name))
+
 
 #yhden listan sivut
 @app.route("/lists/<list_name>/<list_id>", methods=["GET"])
@@ -91,6 +112,8 @@ def show_list(list_id, list_name):
 	#if list_id != Lists.query.get(list_id): #tänne myös jos lista on private + muut tyypit!
 	#	flash("Listaa ei ole olemassa")
 	#	return redirect(url_for("lists_index"))
+	#return render_template("lists/readonly.html", list=Lists.query.get(list_id), jobs=Jobs.query.filter_by(list_id=list_id))
+	#return render_template("lists/readwrite.html", list=Lists.query.get(list_id), jobs=Jobs.query.filter_by(list_id=list_id))
 	return render_template("lists/showlist.html", list=Lists.query.get(list_id), jobs=Jobs.query.filter_by(list_id=list_id))
 
 #käyttöohjeiden tulostus
@@ -98,26 +121,4 @@ def show_list(list_id, list_name):
 def ohje():
 	return render_template("/lists/kayttoohje.html")
 
-
-#listan tyypin muuntaminen
-@app.route("/lists/<list_name>/<list_id>/changetype", methods=["POST"])
-@login_required
-def type_change(list_name, list_id):
-	#if request.method == 'POST':
-		lista=Lists.sfsdfquery.get(list_id) #KORJAA VIRHE, testaan tuleeko metodi ikinä suoritukseen
-
-		if lista.type == 1:
-			lista.type = "2"
-			db.session().commit()
-			return redirect(url_for("show_list", list_id=list_id, list_name=list_name))
-
-		if lista.type == 2:
-			lista.type = "3"
-			db.session().commit()
-			return redirect(url_for("show_list", list_id=list_id, list_name=list_name))
-
-		if lista.type == 3:
-			lista.type = "1"
-			db.session().commit()
-			return redirect(url_for("show_list", list_id=list_id, list_name=list_name))
 

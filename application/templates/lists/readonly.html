@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block body %}
+	<table>
+	<form method="GET" action="{{ url_for('show_list', list_id=list.id, list_name=list.name) }}">
+		<h3> {{ list.name }} </h3>
+		
+		{% if current_user.is_authenticated %}
+		
+			{% for job in jobs %}
+				{% if job.list_id == list.id %}
+					<tr>
+						<td>{{ job.name }}</td>
+				
+					</tr>
+				{% endif %}
+			{% endfor %}
+		{% endif %}	
+	</form>
+	</table>
+{% endblock %}
+		
+				                                                                                                        
+				                                                                                                        

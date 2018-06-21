@@ -109,12 +109,22 @@ def type_change(list_name, list_id):
 @app.route("/lists/<list_name>/<list_id>", methods=["GET"])
 @login_required
 def show_list(list_id, list_name):
-	#if list_id != Lists.query.get(list_id): #tänne myös jos lista on private + muut tyypit!
-	#	flash("Listaa ei ole olemassa")
-	#	return redirect(url_for("lists_index"))
-	#return render_template("lists/readonly.html", list=Lists.query.get(list_id), jobs=Jobs.query.filter_by(list_id=list_id))
-	#return render_template("lists/readwrite.html", list=Lists.query.get(list_id), jobs=Jobs.query.filter_by(list_id=list_id))
-	return render_template("lists/showlist.html", list=Lists.query.get(list_id), jobs=Jobs.query.filter_by(list_id=list_id))
+	lista = Lists.query.get(list_id)
+
+	if current_user.admin == 1 or lista.account_id == current_user.id:
+		return render_template("lists/showlist.html", list=Lists.query.get(list_id), jobs=Jobs.query.filter_by(list_id=list_id))
+
+
+	if lista.type == 1:
+		flash("List does not exist or you do now have the rights to see it")
+		return redirect(url_for("lists_index"))
+
+	if lista.type == 2:
+		return render_template("lists/readonly.html", list=Lists.query.get(list_id), jobs=Jobs.query.filter_by(list_id=list_id))
+
+	if lista.type == 3:
+		return render_template("lists/readwrite.html", list=Lists.query.get(list_id), jobs=Jobs.query.filter_by(list_id=list_id))
+
 
 #käyttöohjeiden tulostus
 @app.route("/kayttoohje/", methods=["GET"])

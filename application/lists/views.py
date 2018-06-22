@@ -15,9 +15,9 @@ from application.jobs.forms import JobForm
 def lists_index():
 	#näytä kaikki listat adminille
 	if current_user.admin == 1:
-		return render_template("lists/listaus.html", lists = Lists.query.all(), jobs = Jobs.query.all()) #kaikki työt
+		return render_template("lists/listaus.html", lists = Lists.query.all(), jobs = Jobs.query.all(), jform = JobForm()) #kaikki työt #JOBFORM
 	#muuten vain käyttäjän omat listat
-	return render_template("lists/listaus.html", lists = Lists.query.filter_by(account_id=current_user.id), jobs=Jobs.query.all())
+	return render_template("lists/listaus.html", lists = Lists.query.filter_by(account_id=current_user.id), jobs=Jobs.query.all(), jform=JobForm()) #JOBFORM
 
 
 @app.route("/lists/new/")
@@ -51,26 +51,46 @@ def lists_create():
 @login_required
 def jobs_create(list_id):
 
-	j = Jobs(name=request.form.get("name"), status="1")
+	#uutta-- 22.6.
+	jform = JobForm(request.form)
+
+	if not jform.validate(): #JOBFORM
+		return render_template("lists/listaus.html", jform = jform) #HUOM. jos menee kerta tälle sivulle, pitää siel olla määriteltynä form=JobForm() muuten jinja sanoo form unidentified
+	j = Jobs(jform.name.data, jform.status.data)
 	j.list_id=list_id
 
 	db.session().add(j)
 	db.session().commit()
 
-	return redirect(url_for("lists_index"))
+	return redirect(url_for("lists_index")) #Korjaa vielä mihin tää menee, nyt näkyy vaan Lists-teksti. huono
+
 
 #työn lisääminen listan omalla sivulla
 @app.route("/lists/<list_name>/<list_id>", methods=["POST"])
 @login_required
 def create_job(list_name, list_id):
 
-	j = Jobs(name=request.form.get("name"), status="1")
-	j.list_id=list_id
+	form = JobForm(request.form)
+
+	if not form.validate():
+		return render_template(url_for("show_list", list_id=list_id, list_name=list_name, form=form)) #tänne parempi ilmotus?
+
+	j = Jobs(form.name.data, form.status.data)
+	j.list_id = list_id
 
 	db.session().add(j)
 	db.session().commit()
 
 	return redirect(url_for("show_list", list_id=list_id, list_name=list_name))
+	#----------------
+
+	#j = Jobs(name=request.form.get("name"), status="1")
+	#j.list_id=list_id
+
+	#db.session().add(j)
+	#db.session().commit()
+
+	#return redirect(url_for("show_list", list_id=list_id, list_name=list_name))
 
 
 #listan poisto
@@ -112,7 +132,7 @@ def show_list(list_id, list_name):
 	lista = Lists.query.get(list_id)
 
 	if current_user.admin == 1 or lista.account_id == current_user.id:
-		return render_template("lists/showlist.html", list=Lists.query.get(list_id), jobs=Jobs.query.filter_by(list_id=list_id))
+		return render_template("lists/showlist.html", list=Lists.query.get(list_id), jobs=Jobs.query.filter_by(list_id=list_id), form = JobForm())
 
 
 	if lista.type == 1:
@@ -123,7 +143,7 @@ def show_list(list_id, list_name):
 		return render_template("lists/readonly.html", list=Lists.query.get(list_id), jobs=Jobs.query.filter_by(list_id=list_id))
 
 	if lista.type == 3:
-		return render_template("lists/readwrite.html", list=Lists.query.get(list_id), jobs=Jobs.query.filter_by(list_id=list_id))
+		return render_template("lists/readwrite.html", list=Lists.query.get(list_id), jobs=Jobs.query.filter_by(list_id=list_id), form = JobForm())
 
 
 #käyttöohjeiden tulostus

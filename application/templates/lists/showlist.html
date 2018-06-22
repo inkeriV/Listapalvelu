@@ -46,8 +46,19 @@
 			</td>		
 			<td>	
 				<form method="POST" action="{{ url_for('create_job', list_id=list.id, list_name=list.name) }}">
-					<td colspan="2">
-					<input type="text" name="name"/>							
+					
+					<td>
+						{{ form.name }}
+					</td>
+					<td>
+						<ul>
+							{% for erron in form.name.errors %}
+								<li> {{ error }} </li>
+							{% endfor %}
+						</ul>
+					</td>	
+					
+					<td colspan="2">							
 					<input type="submit" value="Add a job"/>
 				</form>	
 			</td>

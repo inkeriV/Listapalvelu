@@ -5,14 +5,22 @@
 	<form method="GET" action="{{ url_for('show_list', list_id=list.id, list_name=list.name) }}">
 		<h3>{{ list.name }}</h3>
 		
+		<form method="POST" action="{{ url_for('create_job', list_id=list.id, list_name=list.name) }}">
+		</form>
+		
 		{% if current_user.is_authenticated %}
+	
 		<tr>
+		
 			<form method="POST" action="{{ url_for('create_job', list_id=list.id, list_name=list.name) }}">
 				<td colspan="2">
-				<input type="text", name="name"/>
+				<input type="text" name="name"/>
 				<input type="submit" value="Add a job"/>
 			</form>
+			
+		</tr>
 
+	
 		{% endif %}
 		
 		{% for job in jobs %}

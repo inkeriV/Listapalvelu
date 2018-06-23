@@ -51,18 +51,18 @@ def lists_create():
 @login_required
 def jobs_create(list_id):
 
-	#uutta-- 22.6.
 	jform = JobForm(request.form)
 
-	if not jform.validate(): #JOBFORM
-		return render_template("lists/listaus.html", jform = jform) #HUOM. jos menee kerta tälle sivulle, pitää siel olla määriteltynä form=JobForm() muuten jinja sanoo form unidentified
+	if not jform.validate():
+		flash("job name has to be at least one character")
+		return redirect( url_for("lists_index")) #samalle sivulle, ei tehä mtn
 	j = Jobs(jform.name.data, jform.status.data)
 	j.list_id=list_id
 
 	db.session().add(j)
 	db.session().commit()
 
-	return redirect(url_for("lists_index")) #Korjaa vielä mihin tää menee, nyt näkyy vaan Lists-teksti. huono
+	return redirect(url_for("lists_index"))
 
 
 #työn lisääminen listan omalla sivulla
@@ -73,7 +73,9 @@ def create_job(list_name, list_id):
 	form = JobForm(request.form)
 
 	if not form.validate():
-		return render_template(url_for("show_list", list_id=list_id, list_name=list_name, form=form)) #tänne parempi ilmotus?
+		flash("job name has to be at least one character")
+		return redirect(url_for("show_list", list_id=list_id, list_name=list_name))
+		#Samalle sivulle, ilman muutoksia ^
 
 	j = Jobs(form.name.data, form.status.data)
 	j.list_id = list_id
@@ -82,15 +84,6 @@ def create_job(list_name, list_id):
 	db.session().commit()
 
 	return redirect(url_for("show_list", list_id=list_id, list_name=list_name))
-	#----------------
-
-	#j = Jobs(name=request.form.get("name"), status="1")
-	#j.list_id=list_id
-
-	#db.session().add(j)
-	#db.session().commit()
-
-	#return redirect(url_for("show_list", list_id=list_id, list_name=list_name))
 
 
 #listan poisto
@@ -132,7 +125,7 @@ def show_list(list_id, list_name):
 	lista = Lists.query.get(list_id)
 
 	if current_user.admin == 1 or lista.account_id == current_user.id:
-		return render_template("lists/showlist.html", list=Lists.query.get(list_id), jobs=Jobs.query.filter_by(list_id=list_id), form = JobForm())
+		return render_template("lists/showlist.html", list=Lists.query.get(list_id), jobs=Jobs.query.filter_by(list_id=list_id), form=JobForm())
 
 
 	if lista.type == 1:

@@ -31,7 +31,7 @@
 						</td>	
 									
 						<td colspan="2">							
-						<input type="submit" value="Add a job"/>
+						<input type="submit" value="Lisää työ"/>
 					</form>	
 				</td>
 			
@@ -39,7 +39,7 @@
 			{% for job in jobs %}
 				{% if job.list_id == list.id %}
 				<tr>
-					<td><li>{{ job.name }}</li></td>
+					<td></td><td>{{ job.name }}</td>
 				</tr>
 				{% endif %}
 			{% endfor %}		

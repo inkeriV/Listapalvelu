@@ -28,3 +28,11 @@ def change_status(job_id, list_name, list_id):
 		db.session().commit()
 		return redirect(url_for("show_list", list_id=list_id, list_name=list_name))
 
+
+#työn poisto
+@app.route("/<list_name>/<list_id>/<job_id>/delete", methods=["GET", "POST"])
+@login_required
+def job_delete(job_id, list_name, list_id):
+	db.session.delete(Jobs.query.get(job_id))
+	db.session().commit()
+	return redirect(url_for("show_list", list_id=list_id, list_name=list_name))

@@ -8,7 +8,7 @@
 		{% if current_user.is_authenticated %}	
 			<tr>
 				{% if list.type == 1 %}
-					<td> This list is private. Other users can't see or modify it. </td>
+					<td> Lista on yksityinen. Muut käyttäjät eivät voi nähdä tai muokata tätä listaa. </td>
 					<td>
 						<form action="{{ url_for('type_change', list_name=list.name, list_id=list.id) }}">
 						</form>	
@@ -17,14 +17,14 @@
 					                                                                                                                                                        
 				{% endif %}
 				{% if list.type == 2 %}
-			   		<td> This list can be seen by users who know the url-address of this list. </td>
+			   		<td> Listaa pystyvät tarkastelemaan ne käyttäjät, jotka ovat saaneet listan url-osoitteen. </td>
 			   		<td>
 			   		      	<form action="{{ url_for('type_change', list_name=list.name, list_id=list.id) }}">
 			   			</form>
 			 		</td>
 				{% endif %}
 				{% if list.type == 3 %}
-			   		<td> This list is modifiable by users who know the url-address of this list. </td>
+			   		<td> Listaa pystyvät muokkaamaan ne käyttäjät, jotka ovat saaneet listan url-osoitteen. </td>
 			   		<td>
 			   		      	<form action="{{ url_for('type_change', list_name=list.name, list_id=list.id) }}">
 			   			</form>
@@ -34,7 +34,7 @@
 			</tr> 
 			<td>
 				<form action="{{ url_for('type_change', list_name=list.name, list_id=list.id) }}">
-			       		<input type = "submit" value="change type"/>
+			       		<input type = "submit" value="Vaihda näkyvyyttä"/>
 			     	</form>
 			</td>
 		
@@ -59,7 +59,7 @@
 					</td>	
 					
 					<td colspan="2">							
-					<input type="submit" value="Add a job"/>
+					<input type="submit" value="Lisää työ"/>
 				</form>	
 			</td>
 		{% endif %}
@@ -70,23 +70,28 @@
 				
 				{% if job.status == 1 %}
 					
-					<td> status: waiting </td>
+					<td> status: odottaa </td>
 				
 				{% endif %}
 				{% if job.status == 2 %}
-					<td> status: in process </td>
+					<td> status: kesken </td>
 				{% endif %}
 				{% if job.status == 3 %}
-					<td> status: done </td>
+					<td> status: valmis </td>
 				{% endif %}
 				<td></td>
 				
 				<td> 
 					<form action="{{ url_for('change_status', job_id=job.id, list_name=list.name, list_id=list.id) }}">
-						<input type="submit" value="change status"/>
+						<input type="submit" value="vaihda statusta"/>
 					</form> 
 				</td>
-						
+				<td>
+					<form action="{{ url_for('job_delete', job_id=job.id, list_name=list.name, list_id=list.id) }}">
+						<input type="submit" value="poista työ"/>
+					</form>
+				</td>
+					
 				</tr>		
 			{% endif %}
 		{% endfor %}	

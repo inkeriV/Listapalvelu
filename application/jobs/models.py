@@ -9,9 +9,9 @@ class Jobs(db.Model):
 	name = db.Column(db.String(144), nullable=False)
 	status = db.Column(db.Integer, nullable=False)
 
-	list_id = db.Column(db.Integer, db.ForeignKey('lists.id'), nullable=False) #tarkasta tuleeko list vai lists
+	list_id = db.Column(db.Integer, db.ForeignKey('lists.id'), nullable=False)
 
-	def __init__(self, name, status): #list_id ei tarvi tähän?
+	def __init__(self, name, status):
 		self.name = name
 		self.status = 1
 

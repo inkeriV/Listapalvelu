@@ -6,13 +6,11 @@ app = Flask(__name__)
 
 from flask_sqlalchemy import SQLAlchemy
 
-#herokun tietokanta
-#kun herokussa, käytetään herokun tietokantaa
-#muuten omaa tietokantaa
+#herokussa herokun tietokanta, lokaalissa oma
 import os
 
 if os.environ.get("HEROKU"):
-	app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL") # ("postgresql-tetrahedral-44109")
+	app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL") 
 else:
 	app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///lists.db"
 	app.config["SQLALCHEMY_ECHO"] = True
@@ -44,7 +42,7 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 
 login_manager.login_view = "auth_login"
-login_manager.login_message = "Please login to use this functionality."
+login_manager.login_message = "Kirjaudu sisään käyttääksesi palvelua."
 
 @login_manager.user_loader
 def load_user(user_id):

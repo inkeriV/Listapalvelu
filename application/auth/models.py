@@ -13,16 +13,12 @@ class User(db.Model):
 	username = db.Column(db.String(144), nullable=False)
 	password = db.Column(db.String(144), nullable=False)
 
-	#alla olevasta rivistä tuli virhe, sillä olin kirjoittanut "lists" enkä "Lists".
-	#Lists viittaa luokkaan ja lists viittaa tauluun !! tässä piti viitata luokkaan.
 	lists = db.relationship("Lists", backref='account', lazy=True)
-	#admin-boolean 17.6.
 	admin = db.Column(db.Boolean, nullable=False)
 
 
 
-	#jotta rekisteröityminen onnistuu, parametreinä kaikki syötet. attribuutit!
-	def __init__(self, name, username, password, admin): #user-role 17.6.
+	def __init__(self, name, username, password, admin): 
 		self.name=name
 		self.username=username
 		self.password=password
@@ -41,20 +37,18 @@ class User(db.Model):
 	def is_authenticated(self):
 	        return True
 
-	def get_admin(self): #admin boolean 17.6.
+	def get_admin(self): 
 		return self.admin
 
-	#yhteenvetokysely. muista sisentää!
+	#yhteenvetokysely
 	@staticmethod
 	def users_with_no_started_jobs():
-		stmt = 	text(	"SELECT DISTINCT Account.id FROM Account, Lists, Jobs" #count(account.id) 
+		stmt = 	text(	"SELECT DISTINCT Account.id FROM Account, Lists, Jobs" 
 		              	" WHERE Account.id = Lists.account_id AND Lists.id = Jobs.list_id"
 		                " AND Jobs.id NOT IN(SELECT Jobs.id FROM Jobs WHERE"
 		                " Jobs.status=2 OR Jobs.status=3)")
 		tulos=db.engine.execute(stmt)
-		#print(tulos.fetchall())
-		#for row in tulos: #toinen vaihtoehto, kyselyssä vika..
-		#	print(row[0])
+
 		lista=[]
 		for row in tulos:
 			lista.append({"id":row[0]})

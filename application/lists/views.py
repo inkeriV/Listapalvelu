@@ -15,9 +15,9 @@ from application.jobs.forms import JobForm
 def lists_index():
 	#näytä kaikki listat adminille
 	if current_user.admin == 1:
-		return render_template("lists/listaus.html", lists = Lists.query.all(), jobs = Jobs.query.all(), jform = JobForm()) #kaikki työt #JOBFORM
+		return render_template("lists/listaus.html", lists = Lists.query.all(), jobs = Jobs.query.all(), jform = JobForm())
 	#muuten vain käyttäjän omat listat
-	return render_template("lists/listaus.html", lists = Lists.query.filter_by(account_id=current_user.id), jobs=Jobs.query.all(), jform=JobForm()) #JOBFORM
+	return render_template("lists/listaus.html", lists = Lists.query.filter_by(account_id=current_user.id), jobs=Jobs.query.all(), jform=JobForm())
 
 
 @app.route("/lists/new/")
@@ -39,7 +39,6 @@ def lists_create():
 	l = Lists(form.name.data, form.type.data)
 
 	l.account_id = current_user.id
-	#^ viitteen lisääminen. tässä oli db.account eikä l.account..tästä tuli virhe
 
 	db.session().add(l)
 	db.session().commit()
@@ -47,7 +46,7 @@ def lists_create():
 	return redirect(url_for("lists_index"))
 
 #työn lisääminen
-@app.route("/lists/job/<list_id>", methods=["POST"]) #tuli virhe list_id puuttuu: korjautu kun laitto urliin <list_id>
+@app.route("/lists/job/<list_id>", methods=["POST"])
 @login_required
 def jobs_create(list_id):
 
@@ -55,7 +54,7 @@ def jobs_create(list_id):
 
 	if not jform.validate():
 		flash("job name has to be at least one character")
-		return redirect( url_for("lists_index")) #samalle sivulle, ei tehä mtn
+		return redirect( url_for("lists_index"))
 	j = Jobs(jform.name.data, jform.status.data)
 	j.list_id=list_id
 
@@ -75,7 +74,7 @@ def create_job(list_name, list_id):
 	if not form.validate():
 		flash("job name has to be at least one character")
 		return redirect(url_for("show_list", list_id=list_id, list_name=list_name))
-		#Samalle sivulle, ilman muutoksia ^
+
 
 	j = Jobs(form.name.data, form.status.data)
 	j.list_id = list_id
@@ -90,16 +89,16 @@ def create_job(list_name, list_id):
 @app.route("/lists/delete/<list_id>", methods=["GET","POST"])
 @login_required
 def lists_delete(list_id):
-	#db.session.delete(Jobs.query.filter_by(list_id = list_id))
-	#db.session().commit()
+
 	db.session.delete(Lists.query.get(list_id))
 	db.session().commit()
 	return redirect(url_for("lists_index"))
 
+
 #listan tyypin muuntaminen
 @app.route("/lists/<list_name>/<list_id>/changetype", methods=["GET","POST"])
 def type_change(list_name, list_id):
-	# if request.method == "POST":
+
 	l=Lists.query.get(list_id)
 
 	if l.type == 1:

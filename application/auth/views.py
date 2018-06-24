@@ -1,5 +1,5 @@
 from flask import render_template, request, redirect, url_for, flash
-#lisätään kirjautumislomakkeen käsittelyyn konkreettinen kirjautuminen, flaskin login_user -funktio
+
 from flask_login import login_user, logout_user
 
 from application import app, db
@@ -31,7 +31,7 @@ def auth_logout():
 def register():
 	form = RegisterForm(request.form)
 
-	if not form.validate(): #tod.näk. forms.py piti olla class Meta, jotta rekist. toimi
+	if not form.validate(): #class Meta formiin, jotta toimii
 		return render_template("auth/registerform.html", form=form)
 
 	if request.method == "POST":

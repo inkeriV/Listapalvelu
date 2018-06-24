@@ -8,6 +8,7 @@ from application.jobs.forms import JobForm
 from application.lists.models import Lists
 from application.lists.forms import ListForm
 
+#työn statuksen vaihto
 @app.route("/<list_name>/<list_id>/status/<job_id>", methods=["GET", "POST"])
 @login_required
 def change_status(job_id, list_name, list_id):

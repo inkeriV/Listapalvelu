@@ -18,4 +18,4 @@ class RegisterForm(FlaskForm):
 	confirm = PasswordField("Confirm password", validators=[DataRequired("confirm password"), EqualTo("password")])
 
 	class Meta:
-		csrf=False #validointien tarkastaminen toimi vasta kun muistin lisätä tämän
+		csrf=False #form ei toimi ilman tätä

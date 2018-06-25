@@ -1,14 +1,16 @@
-* Käyttäjänä voin rekisteröityä palveluun luomalla itselleni käyttäjätunnuksen ja salasanan.
-* Käyttäjänä voin kirjautua palveluun omilla tunnuksillani.
-* Käyttäjänä voin luoda itselleni useita listoja.
-* Käyttäjänä voin lisätä listaan muistettavia asioita.
-* Käyttäjänä voin poistaa listaltani asioita.
-* Käyttäjänä voin poistaa luomani listan.
-* Käyttäjänä voin luoda ryhmä-listan muiden käyttäjien katseltavaksi tai käytettäväksi.
-* Käyttäjänä voin lisätä toisen käyttäjän tekemän ryhmä-listan omiin listoihini, jos olen saanut linkin kyseiseen listaan.
-* Ryhmä-listan luojana voin lisätä listaan töitä, poistaa listalta töitä tai poistaa koko listan.
-* Ryhmä-listan luojana vain minä voin poistaa koko listan.
-* Ryhmä-listan jäsenenä voin lisätä listaan töitä tai  poistaa listalta töitä, jos lista on tarkoitettu ryhmän käytettäväksi.
-* Ryhmä-listan jäsenenä en voi lisätä listaan töitä tai poistaa listalta töitä, jos lista on tarkoitettu ryhmän katseltavaksi.
-* Ryhmä-listan jäsenenä voin poistaa listan omista listoistani.
+#### Käyttäjä
+
+* Käyttäjänä voin rekisteröityä ja kirjautua palveluun.
+* Käyttäjänä voin luoda itselleni listoja, joihin voin lisätä/poistaa töitä.
+* Käyttäjänä voin vaihtaa töitteni statusta, sitä mukaan kun ne etenevät.
+* Käyttäjänä voin poistaa listojani.
+* Käyttäjänä voin vaihtaa listojeni näkyvyyttä. Voin laittaa listan yksityiseksi, luettavaksi tai muokattavaksi.
+* Käyttäjänä voin katsoa toisen käyttäjän luettavaksi tarkoitettua listaa, jos minulla on linkki siihen.
+* Käyttäjänä voin muokata toisen käyttäjän muokattavaksi tarkoitettua listaa, jos minulla on linkki siihen.
+
+#### Admin
+* Ylläpitäjänä näen kaikkien käyttäjien listat.
+* Ylläpitäjänä voin muokata kaikkien käyttäjien listoja ja töitä.
+* Ylläpitäjänä voin poistaa kaikkien käyttäjien listoja.
+* Ylläpitäjänä vain minä voin nähdä SQL-kyselyt.
 

@@ -56,17 +56,16 @@ class User(db.Model):
 
 
 	@staticmethod
-	def users_with_no_started_jobs():
-		stms = text (	"SELECT DISTINCT Account.id, Account.name FROM Account, Lists"
-				" WHERE Account.id = Lists.account_id AND Lists.id IN"
-				"(SELECT Lists.id FROM Lists, Jobs WHERE Lists.id = Jobs.list_id"
-				" AND NOT EXISTS(SELECT Jobs.id FROM Jobs WHERE Jobs.status=2"
-				" OR Jobs.status=3))" )
+	def users_and_lists_count():
+		stms = text (	"SELECT Account.id, Account.name, COUNT(*) FROM Account"
+				" INNER JOIN Lists ON Account.id=Lists.account_id"
+				"  GROUP BY Account.id ORDER BY COUNT(Lists.id) DESC" )
+
 		tulos=db.engine.execute(stms)
 
 		lista=[]
 		for row in tulos:
-			lista.append({"id":row[0], "nimi":row[1]})
+			lista.append({"id":row[0], "nimi":row[1], "lists":row[2]})
 		return lista
 
 

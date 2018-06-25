@@ -16,3 +16,4 @@ Kurssin loppuvaiheessa sovelluksen rakenne ja toiminnallisuuden logiikka oli jo 
 
 #### Kokonaisuudessaan
 Aluksi kurssi vähän kauhistutti, mutta loppujen lopuksi tämä oli aika kiva kurssi (työläs kylläkin). Python ei ollut mikään ongelma, vaikkei sitä tuntisikaan etukäteen. Flaskistakin löytyi paljon tietoa ja esimerkkejä. Hyvä juttu että sovellusta demottiin pienemmissä ryhmissä, eikä kaikille luokan edessä!
+

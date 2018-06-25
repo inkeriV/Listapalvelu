@@ -31,32 +31,33 @@
 			   		</td>	
 				{% endif %}
 			
-			</tr> 
+			</tr>
+			<tr> 
 			<td>
 				<form action="{{ url_for('type_change', list_name=list.name, list_id=list.id) }}">
 			       		<input type = "submit" value="Vaihda näkyvyyttä"/>
 			     	</form>
 			</td>
-		
+			</tr>
+			<tr>
 			                                                                                                                                                        
 			<td>
 				<form action="{{ url_for('lists_delete', list_id=list.id) }}">
 					<input type="submit" value="Poista lista"/>
 				</form>
-			</td>		
+			</td>
+			</tr>		
 			<td>	
 				<form method="POST" action="{{ url_for('create_job', list_id=list.id, list_name=list.name) }}">
 					
 					<td>
 						{{ form.name }}
 					</td>
-					<td>
 						<ul>
 							{% for erron in form.name.errors %}
 								<li> {{ error }} </li>
 							{% endfor %}
-						</ul>
-					</td>	
+						</ul>	
 					
 					<td colspan="2">							
 					<input type="submit" value="Lisää työ"/>

@@ -1,6 +1,6 @@
 ## SQL-Kyselyt
 
-* Kaikki käyttäjät järjestettynä listamääränsä mukaan laskevaan järjestykseen
+* Kaikki käyttäjät, joilla on listoja järjestettynä listamääränsä mukaan laskevaan järjestykseen
 ```sql
 SELECT Account.id, Account.name, COUNT(*) 
 FROM Account INNER JOIN Lists 

@@ -8,18 +8,18 @@
 	{% if current_user.is_authenticated %}
 		{% if current_user.admin == 1 %}
 			
-			<!-- sql-kysely: ketkä eivät ole aloittaneet yhtään työtä -->
-			{% if all_users is defined %}
+			<!-- sql-kysely: käyttäjät, joilla on listoja & listojen lkm -->
+			{% if users_with_lists is defined %}
 			<p>
-				Kaikki käyttäjät järjestettynä listamääränsä mukaan laskevasti:
+				Kaikki käyttäjät, joilla on listoja, järjestettynä listamääränsä mukaan laskevasti:
 			</p>
 			<p>
-				lkm: {{ all_users|length}}
+				lkm: {{ users_with_lists|length}}
 			</p>	
 			<ul>
-				{% for user in all_users %}
+				{% for user in users_with_lists %}
 				<li>
-					id: {{user.id}}, nimi: {{user.nimi}}, listat: {{user.lists}}
+					id: {{user.id}}, nimi: {{user.nimi}}, listoja: {{user.lists}}
 				</li>
 				{% endfor %}	
 			</ul>

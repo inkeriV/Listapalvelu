@@ -1,13 +1,13 @@
 ## Asennusohje (Herokuun)
 
-####Käytössä:
+#### Käytössä:
 * Python flask, PostgreSQL
 
-####Tarvitset:
+#### Tarvitset:
 * [Github](https://github.com/)- ja [Heroku](https://www.heroku.com/)-tilin
 
 
-####Alustus:
+#### Alustus:
 * Lataa koodi koneellesi esim. komentoriviltä komennolla:
 ```
 git clone https://github.com/inkeriV/Listapalvelu.git
@@ -21,10 +21,10 @@ source ENV/bin/activate
 ```
 git remote add origin https://github.com/_käyttäjätunnus_/_sovelluksen-nimi_.git
 ```
-* , jotta voit päivittää koodia gittiin.
+, jotta voit päivittää koodia gittiin.
 
 
-####Sovellus Herokuun:
+#### Sovellus Herokuun:
 * Luo viimeistään nyt tili [Herokuun](https://www.heroku.com/)
 * Asenna [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli#download-and-install)
 * Kirjaudu Herokuun komentoriviltä komennolla:
@@ -49,7 +49,7 @@ git push heroku master
 * Suositeltavaa on käyttää [Herokun github-integraatiota](https://devcenter.heroku.com/articles/github-integration), jolloin Heroku päivittää sovellusta automaattisesti, kun Git-repo päivittyy.
 * Sovellus on nyt asennettu Herokuun!
 
-####PostgreSQL-tietokanta
+#### PostgreSQL-tietokanta
 * Luo Herokuun postgresql-tietokanta komennolla:
 ```
 heroku addons:add heroku-postgresql:hobby-dev
@@ -67,7 +67,7 @@ heroku pg:psql
 \q
 ```
 
-####Sovellus lokaalisti
+#### Sovellus lokaalisti
 * Käynnistyy sovelluksen kotikansiossa komennolla:
 ```
 python3 run.py
@@ -86,6 +86,6 @@ sqlite3 application/lists.db
 .exit
 ```
 
-####Huomioitavaa
+#### Huomioitavaa
 * Admin-käyttäjä on luotava komentoriviltä (admin syntyy, kun boolean admin on '1').
 * Sovellukseen rekisteröityvistä käyttäjistä tulee automaattisesti vain käyttäjiä.

@@ -15,7 +15,7 @@ def auth_login():
 
 	user = User.query.filter_by(username=form.username.data, password=form.password.data).first()
 	if not user:
-		return render_template("auth/loginform.html", form = form, error = "No such username or password")
+		return render_template("auth/loginform.html", form = form, error = "Käyttäjänimi tai salasana väärin.")
 
 	login_user(user)
 	return redirect(url_for("index"))
@@ -23,6 +23,7 @@ def auth_login():
 @app.route("/auth/logout")
 def auth_logout():
 	logout_user()
+	flash("Olet kirjautunut ulos.")
 	return redirect(url_for("index"))
 
 
@@ -40,7 +41,7 @@ def register():
 		db.session().add(user)
 		db.session().commit()
 
-		flash("Registered succesfully. You can now login.")
+		flash("Rekisteröityminen onnistui. Voit nyt kirjautua sisään.")
 
 		return redirect(url_for("index"))
 

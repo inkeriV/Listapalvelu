@@ -13,12 +13,12 @@ class User(db.Model):
 	username = db.Column(db.String(144), nullable=False)
 	password = db.Column(db.String(144), nullable=False)
 
-	lists = db.relationship("Lists", backref='account', lazy=True)
+	lists = db.relationship("Lists",cascade='all, delete-orphan', backref='account', lazy=True)
 	admin = db.Column(db.Boolean, nullable=False)
 
 
 
-	def __init__(self, name, username, password, admin): 
+	def __init__(self, name, username, password, admin):
 		self.name=name
 		self.username=username
 		self.password=password
@@ -43,7 +43,7 @@ class User(db.Model):
 	#yhteenvetokysely
 	@staticmethod
 	def users_with_no_started_jobs():
-		stmt = 	text(	"SELECT DISTINCT Account.id FROM Account, Lists, Jobs" 
+		stmt = 	text(	"SELECT DISTINCT Account.id FROM Account, Lists, Jobs"
 		              	" WHERE Account.id = Lists.account_id AND Lists.id = Jobs.list_id"
 		                " AND Jobs.id NOT IN(SELECT Jobs.id FROM Jobs WHERE"
 		                " Jobs.status=2 OR Jobs.status=3)")

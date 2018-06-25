@@ -1,6 +1,7 @@
 from flask import render_template
 from application import app
 from application.auth.models import User  #yhteenvetokysely
+from flask_login import current_user, login_required
 
 @app.route("/")
 def index():

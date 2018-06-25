@@ -19,7 +19,7 @@ source ENV/bin/activate
 * Luo sovellukselle git-repositorio omalle Github-tilillesi, jotta ylläpito olisi helppoa.
 * Komenna
 ```
-git remote add origin https://github.com/_käyttäjätunnus_/_sovelluksen-nimi_.git
+git remote add origin https://github.com/käyttäjätunnus/sovelluksen-nimi.git
 ```
 , jotta voit päivittää koodia gittiin.
 
@@ -33,12 +33,12 @@ heroku login
 ```
 * Luo sovellukselle paikka Herokuun komennolla:
 ```
-heroku create _haluamasi-nimi-sovellukselle_
+heroku create haluamasi-nimi-sovellukselle
 ```
-* Sovellukselle tulostuu osoite
+* Sovellukselle tulostuu osoite (muotoa https://lista-palvelu-iv.herokuapp.com/)
 * Lisää Gittiin tieto Herokusta komennolla:
 ```
-git remote add heroku _sovelluksen-osoite-herokussa_
+git remote add heroku sovelluksen-osoite-herokussa
 ```
 * Projektin lähettäminen Herokuun onnistuu committaamalla Gittiin
 ```

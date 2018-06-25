@@ -1,20 +1,91 @@
-## Asennusohje Herokuun
+## Asennusohje (Herokuun)
 
 ####Käytössä:
 * Python flask, PostgreSQL
 
 ####Tarvitset:
-* Github- ja Heroku-tilin
+* [Github](https://github.com/)- ja [Heroku](https://www.heroku.com/)-tilin
 
 
+####Alustus:
+* Lataa koodi koneellesi esim. komentoriviltä komennolla:
+```
+git clone https://github.com/inkeriV/Listapalvelu.git
+``` 
+* Siirry virtuaaliympäristöön sovelluksen juurikansiossa komennolla:
+```
+source ENV/bin/activate
+```
+* Luo sovellukselle git-repositorio omalle Github-tilillesi, jotta ylläpito olisi helppoa.
+* Komenna
+```
+git remote add origin https://github.com/_käyttäjätunnus_/_sovelluksen-nimi_.git
+```
+* , jotta voit päivittää koodia gittiin.
 
 
+####Sovellus Herokuun:
+* Luo viimeistään nyt tili [Herokuun](https://www.heroku.com/)
+* Asenna [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli#download-and-install)
+* Kirjaudu Herokuun komentoriviltä komennolla:
+```
+heroku login
+```
+* Luo sovellukselle paikka Herokuun komennolla:
+```
+heroku create _haluamasi-nimi-sovellukselle_
+```
+* Sovellukselle tulostuu osoite
+* Lisää Gittiin tieto Herokusta komennolla:
+```
+git remote add heroku _sovelluksen-osoite-herokussa_
+```
+* Projektin lähettäminen Herokuun onnistuu committaamalla Gittiin
+```
+git add .
+git commit -m "commit teksti"
+git push heroku master
+```
+* Suositeltavaa on käyttää [Herokun github-integraatiota](https://devcenter.heroku.com/articles/github-integration), jolloin Heroku päivittää sovellusta automaattisesti, kun Git-repo päivittyy.
+* Sovellus on nyt asennettu Herokuun!
 
-* lataa koodi selaimesta Listapalvelun pääsivulta vihreästä napista tai komentoriviltä 
-* Luo tunnukset Herokun nettisivuilla
-* Lataa sovellus omalle koneellesi
-* Käytetään Gunicorn palvelunta
-* requirements.txt tiedostossa on Herokulle valmiina tiedot siitä, mitä riippuvuuksia sen pitää asentaa
+####PostgreSQL-tietokanta
+* Luo Herokuun postgresql-tietokanta komennolla:
+```
+heroku addons:add heroku-postgresql:hobby-dev
+```
+* Tietokantaa pääsee katsomaan komennolla:
+```
+heroku pg:psql
+```
+* Taulut näkyviin
+```
+\dt
+```
+* Poistu komennolla
+```
+\q
+```
 
-* Kirjaudu Herokuun komentoriviltä komennolla "heroku login" tai "~/path/heroku login"
-* Luo Herokuun paikka sovellukselle komennolla "heroku create sovelluksen-nimi"
+####Sovellus lokaalisti
+* Käynnistyy sovelluksen kotikansiossa komennolla:
+```
+python3 run.py
+```
+* Lokaali sovellus käyttää SQLite-tietokantaa
+* Tietokantaa pääsee katsomaan komennolla:
+```
+sqlite3 application/lists.db
+```
+* Taulut näkyviin
+```
+.schema
+``` 
+* Ja poistu komennolla
+```
+.exit
+```
+
+####Huomioitavaa
+* Admin-käyttäjä on luotava komentoriviltä (admin syntyy, kun boolean admin on '1').
+* Sovellukseen rekisteröityvistä käyttäjistä tulee automaattisesti vain käyttäjiä.

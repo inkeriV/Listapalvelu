@@ -1,5 +1,16 @@
-## Asennusohje Herokuun (alustava)
+## Asennusohje Herokuun
 
+####Käytössä:
+* Python flask, PostgreSQL
+
+####Tarvitset:
+* Github- ja Heroku-tilin
+
+
+
+
+
+* lataa koodi selaimesta Listapalvelun pääsivulta vihreästä napista tai komentoriviltä 
 * Luo tunnukset Herokun nettisivuilla
 * Lataa sovellus omalle koneellesi
 * Käytetään Gunicorn palvelunta

@@ -11,7 +11,7 @@ Ryhmälistaan saadaan linkki sen luojalta, josta muut käyttäjät pystyvät tar
 
 ## Tunnukset
 
-#### admin tunnukset
+#### Admin tunnukset
 ```
 username: yllapitaja 
 password: hbkypitaja10 
@@ -19,7 +19,7 @@ password: hbkypitaja10
 * admin näkee ja pystyy muokkaamaan/poistamaan kaikkien käyttäjien listoja
 * vain admin näkee SQL-kyselyt
 
-#### tavallisen käyttäjän tunnukset
+#### Tavallisen käyttäjän tunnukset
 ```
 käyttäjätunnus: tester12
 salasana: hbky12

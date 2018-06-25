@@ -17,7 +17,7 @@
 				lkm: {{ all_users|length}}
 			</p>	
 			<ul>
-				{% for user in lazy_users %}
+				{% for user in all_users %}
 				<li>
 					id: {{user.id}}, nimi: {{user.nimi}}, listat: {{user.lists}}
 				</li>

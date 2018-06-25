@@ -6,20 +6,6 @@ Käyttäjä voi myös luoda yhteisen listan useamman käyttäjän käyttöön. R
 
 Ryhmälistaan saadaan linkki sen luojalta, josta muut käyttäjät pystyvät tarkastelemaan listaa. 
 
-# Toimintoja:
-
-* Rekisteröityminen
-* Kirjautuminen
-* Listan luominen
-* Listaan lisääminen / listasta poistaminen
-* Listassa olevien töitten statuksen vaihtaminen
-* Listan näkyvyyden vaihtaminen
-* Listan poistaminen
-* Omien listojen listaaminen
-
-
-## Tietokantakaavio
-![alt text](https://yuml.me/845eedc9.png "Tietokantakaavio")
 
 [Sovellus Herokussa](https://lista-palvelu-iv.herokuapp.com)
 
@@ -44,10 +30,33 @@ käyttäjätunnus2: tester13
 salasana2: hbky13
 ```
 
+## Toimintoja:
+
+* Rekisteröityminen
+* Kirjautuminen
+* Listan luominen
+* Listaan lisääminen / listasta poistaminen
+* Listassa olevien töitten statuksen vaihtaminen
+* Listan näkyvyyden vaihtaminen
+* Listan poistaminen
+* Omien listojen listaaminen
+
+## Dokumentaatio
+
+### Tietokantakaavio
+![alt text](https://yuml.me/845eedc9.png "Tietokantakaavio")
+
+
 [User stories](https://github.com/inkeriV/Listapalvelu/blob/master/documentation/user-story.md)
 
 [Asennusohje](https://github.com/inkeriV/Listapalvelu/blob/master/documentation/asennusohje.md)
 
 [Käyttöohje](https://github.com/inkeriV/Listapalvelu/blob/master/documentation/kayttoohje.md)
+
+[CREATE TABLE-lauseet](https://github.com/inkeriV/Listapalvelu/blob/master/documentation/createtable-lauseet.md)
+
+[SQL-kyselyt](https://github.com/inkeriV/Listapalvelu/blob/master/documentation/sql-kyselyt.md)
+
+[Sovelluksen puutteet](https://github.com/inkeriV/Listapalvelu/blob/master/documentation/puutteet.md)
 
 [Omat kokemukset](https://github.com/inkeriV/Listapalvelu/blob/master/documentation/kokemukset.md)

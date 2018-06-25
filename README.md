@@ -21,8 +21,6 @@ Ryhmälistaan saadaan linkki sen luojalta, josta muut käyttäjät pystyvät tar
 ## Tietokantakaavio
 ![alt text](https://yuml.me/845eedc9.png "Tietokantakaavio")
 
-[User stories](https://github.com/inkeriV/Listapalvelu/blob/master/documentation/user-story.md)
-
 [Sovellus Herokussa](https://lista-palvelu-iv.herokuapp.com)
 
 ## Tunnukset
@@ -30,7 +28,8 @@ Ryhmälistaan saadaan linkki sen luojalta, josta muut käyttäjät pystyvät tar
 #### admin tunnukset
 * username: yllapitaja 
 * password: hbkypitaja10 
-* (admin näkee ja pystyy muokkaamaan/poistamaan kaikkien käyttäjien listoja)
+* admin näkee ja pystyy muokkaamaan/poistamaan kaikkien käyttäjien listoja
+* vain admin näkee SQL-kyselyt
 
 #### tavallisen käyttäjän tunnukset
 * käyttäjätunnus: tester12
@@ -38,6 +37,8 @@ Ryhmälistaan saadaan linkki sen luojalta, josta muut käyttäjät pystyvät tar
 * tai
 * käyttäjätunnus2: tester13
 * salasana2: hbky13
+
+[User stories](https://github.com/inkeriV/Listapalvelu/blob/master/documentation/user-story.md)
 
 [Asennusohje](https://github.com/inkeriV/Listapalvelu/blob/master/documentation/asennusohje.md)
 

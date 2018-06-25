@@ -7,13 +7,56 @@
 	
 	{% if current_user.is_authenticated %}
 		{% if current_user.admin == 1 %}
+			<!-- sql-kysely: keillä on aloittamattomia töitä -->
+			{% if waiting_jobs is defined %}
+				<p> 
+					Käyttäjät, joilla on aloittamattomia töitä: 
+				</p>
+				<p>
+					lkm: {{ waiting_jobs|length }}
+				</p>
+				<ul> 
+					{% for user in waiting_jobs %} 
+					<li>
+						id: {{user.id}}, nimi: {{user.nimi}}
+					</li>
+					{% endfor %}	
+				</ul>
+			{% endif %}
+			
+			<!-- sql-kysely: ketkä eivät ole aloittaneet yhtään työtä -->
 			{% if lazy_users is defined %}
 			<p>
-				Number of users who haven't started any of their jobs:
+				Käyttäjät, jotka eivät ole aloittaneet yhtään työtä:
 			</p>
+			<p>
+				lkm: {{ lazy_users|length}}
+			</p>	
 			<ul>
-				{{ lazy_users|length }}
+				{% for user in lazy_users %}
+				<li>
+					id: {{user.id}}, nimi: {{user.name}}
+				</li>
+				{% endfor %}	
 			</ul>
+		 	{% endif %}
+		 	
+		 	
+		 	<!-- sql-kysely: keillä ei ole yhtään listaa -->
+		 	{% if no_lists is defined %}
+		 	<p>
+		 		Käyttäjät, joilla ei ole yhtään listaa: 
+		 	</p>
+		 	<p>
+		 		lkm: {{ no_lists|length }}
+		 	</p>
+		 	<ul>
+		 		{% for user in no_lists %}
+		 		<li> 
+		 			id: {{user.id}}, nimi: {{user.nimi}}
+		 		</li>
+		 		{% endfor %}	
+		 	</ul>	
 		 	{% endif %}
 		 {% endif %}
 	{% endif %}

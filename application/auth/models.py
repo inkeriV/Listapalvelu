@@ -37,13 +37,13 @@ class User(db.Model):
 	def is_authenticated(self):
 	        return True
 
-	def get_admin(self): 
+	def get_admin(self):
 		return self.admin
 
-	#yhteenvetokysely
+	#yhteenvetokyselyt
 	@staticmethod
-	def users_with_no_started_jobs():
-		stmt = 	text(	"SELECT DISTINCT Account.id FROM Account, Lists, Jobs"
+	def users_with_waiting_jobs():
+		stmt = 	text(	"SELECT DISTINCT Account.id, Account.name FROM Account, Lists, Jobs"
 		              	" WHERE Account.id = Lists.account_id AND Lists.id = Jobs.list_id"
 		                " AND Jobs.id NOT IN(SELECT Jobs.id FROM Jobs WHERE"
 		                " Jobs.status=2 OR Jobs.status=3)")
@@ -51,5 +51,33 @@ class User(db.Model):
 
 		lista=[]
 		for row in tulos:
-			lista.append({"id":row[0]})
+			lista.append({"id":row[0], "nimi":row[1]})
+		return lista
+
+
+	@staticmethod
+	def users_with_no_started_jobs():
+		stms = text (	"SELECT DISTINCT Account.id, Account.name FROM Account, Lists"
+				" WHERE Account.id = Lists.account_id AND Lists.id IN"
+				"(SELECT Lists.id FROM Lists, Jobs WHERE Lists.id = Jobs.list_id"
+				" AND NOT EXISTS(SELECT Jobs.id FROM Jobs WHERE Jobs.status=2"
+				" OR Jobs.status=3))" )
+		tulos=db.engine.execute(stms)
+
+		lista=[]
+		for row in tulos:
+			lista.append({"id":row[0], "nimi":row[1]})
+		return lista
+
+
+	@staticmethod
+	def users_with_no_lists():
+		smtu = text(	"SELECT DISTINCT Account.id, Account.name FROM Account WHERE NOT EXISTS("
+				"SELECT DISTINCT Lists.account_id FROM Lists WHERE"
+				" Account.id=Lists.account_id)" )
+		tulos=db.engine.execute(smtu)
+
+		lista=[]
+		for row in tulos:
+			lista.append({"id":row[0], "nimi":row[1]})
 		return lista

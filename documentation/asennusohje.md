@@ -35,7 +35,7 @@ heroku login
 ```
 heroku create haluamasi-nimi-sovellukselle
 ```
-* Sovellukselle tulostuu osoite (muotoa https://lista-palvelu-iv.herokuapp.com/)
+* Sovellukselle tulostuu osoite (muotoa sovelluksen-nimi.herokuapp.com/)
 * Lisää Gittiin tieto Herokusta komennolla:
 ```
 git remote add heroku sovelluksen-osoite-herokussa
